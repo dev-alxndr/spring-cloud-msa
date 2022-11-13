@@ -27,7 +27,7 @@ public class UserController {
     private final UserFacade userFacade;
 
 
-    @PostMapping("/sign-up")
+    @PostMapping("/users")
     public ResponseEntity signUp(@RequestBody UserDto.Signup request) {
 
         UserInfo userInfo = userFacade.signUp(request);
