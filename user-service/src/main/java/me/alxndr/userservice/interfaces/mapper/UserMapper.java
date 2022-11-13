@@ -4,7 +4,9 @@ import me.alxndr.userservice.domain.user.User;
 import me.alxndr.userservice.domain.user.UserCommand;
 import me.alxndr.userservice.domain.user.UserInfo;
 import me.alxndr.userservice.interfaces.dto.UserDto;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.UUID;
 
