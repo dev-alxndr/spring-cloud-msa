@@ -5,4 +5,6 @@ package me.alxndr.userservice.domain.user;
  * @date : 2022/10/23
  */
 public interface UserStore {
+
+    User save(User newUser);
 }

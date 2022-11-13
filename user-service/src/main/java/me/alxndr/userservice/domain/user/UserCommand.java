@@ -7,6 +7,7 @@ import lombok.ToString;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 /**
  * @author : Alexander Choi
@@ -26,6 +27,8 @@ public class UserCommand {
         private String password;
 
         private String userId;
+
+        private LocalDateTime createdAt;
     }
 
 }

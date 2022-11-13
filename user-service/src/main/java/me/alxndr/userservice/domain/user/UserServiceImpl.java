@@ -2,7 +2,7 @@ package me.alxndr.userservice.domain.user;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.alxndr.userservice.interfaces.UserDto;
+import me.alxndr.userservice.interfaces.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,9 +15,13 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     private final UserStore userStore;
-
+    private final UserMapper userMapper;
     @Override
-    public void createUser(UserCommand.Signup request) {
-        
+    public UserInfo createUser(UserCommand.Signup command) {
+
+        User newUser = userMapper.toEntity(command);
+        userStore.save(newUser);
+
+        return userMapper.toInfo(newUser);
     }
 }

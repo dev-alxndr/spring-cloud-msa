@@ -1,4 +1,4 @@
-package me.alxndr.userservice.interfaces;
+package me.alxndr.userservice.interfaces.dto;
 
 import lombok.Data;
 import lombok.Getter;

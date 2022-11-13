@@ -1,7 +1,9 @@
 package me.alxndr.userservice.interfaces.mapper;
 
+import me.alxndr.userservice.domain.user.User;
 import me.alxndr.userservice.domain.user.UserCommand;
-import me.alxndr.userservice.interfaces.UserDto;
+import me.alxndr.userservice.domain.user.UserInfo;
+import me.alxndr.userservice.interfaces.dto.UserDto;
 import org.mapstruct.*;
 
 import java.util.UUID;
@@ -16,6 +18,9 @@ public interface UserMapper {
     @Mapping(target = "userId", expression = "java(generateUserId())")
     UserCommand.Signup toCommand(UserDto.Signup request);
 
+    User toEntity(UserCommand.Signup command);
+
+    UserInfo toInfo(User user);
 
     default String generateUserId() {
         return UUID.randomUUID().toString();
