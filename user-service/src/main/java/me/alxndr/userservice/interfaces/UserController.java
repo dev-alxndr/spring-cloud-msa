@@ -3,16 +3,15 @@ package me.alxndr.userservice.interfaces;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.alxndr.userservice.application.UserFacade;
-import me.alxndr.userservice.domain.user.UserCommand;
 import me.alxndr.userservice.domain.user.UserInfo;
 import me.alxndr.userservice.interfaces.dto.UserDto;
-import me.alxndr.userservice.interfaces.mapper.UserMapper;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author : Alexander Choi
@@ -36,6 +35,20 @@ public class UserController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(userInfo);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<UserInfo>> getUsers() {
+        final List<UserInfo> userInfos = userFacade.findAll();
+
+        return ResponseEntity.ok(userInfos);
+    }
+
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<UserInfo.includeOrders> getUser(@PathVariable final String userId) {
+        final UserInfo.includeOrders userInfo = userFacade.findByUserId(userId);
+
+        return ResponseEntity.ok(userInfo);
     }
 
 

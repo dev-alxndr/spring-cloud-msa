@@ -24,6 +24,8 @@ public interface UserMapper {
 
     UserInfo toInfo(User user);
 
+    UserInfo.includeOrders toIncludeOrders(User user);
+
     default String generateUserId() {
         return UUID.randomUUID().toString();
     }

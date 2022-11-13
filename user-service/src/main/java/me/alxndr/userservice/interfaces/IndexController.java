@@ -2,13 +2,9 @@ package me.alxndr.userservice.interfaces;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.alxndr.userservice.common.vo.Greeting;
-import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author : Alexander Choi
@@ -20,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class IndexController {
 
-    private final Greeting greeting;
 
     @GetMapping("/")
     public String hello() {

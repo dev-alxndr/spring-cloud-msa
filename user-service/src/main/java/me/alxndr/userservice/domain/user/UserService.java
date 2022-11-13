@@ -8,4 +8,8 @@ public interface UserService {
 
     UserInfo createUser(UserCommand.Signup request);
 
+    UserInfo.includeOrders findByUserId(String userId);
+
+    Iterable<UserInfo> getUsers();
+
 }

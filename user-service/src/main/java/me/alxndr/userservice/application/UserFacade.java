@@ -9,6 +9,8 @@ import me.alxndr.userservice.interfaces.dto.UserDto;
 import me.alxndr.userservice.interfaces.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author : Alexander Choi
  * @date : 2022/10/23
@@ -25,6 +27,14 @@ public class UserFacade {
         UserCommand.Signup command = userMapper.toCommand(request);
 
         return userService.createUser(command);
+    }
+
+    public UserInfo.includeOrders findByUserId (final String userId) {
+        return userService.findByUserId(userId);
+    }
+
+    public List<UserInfo> findAll() {
+        return (List<UserInfo>) userService.getUsers();
     }
 
 
