@@ -7,12 +7,12 @@ import me.alxndr.userservice.domain.user.UserCommand;
 import me.alxndr.userservice.domain.user.UserInfo;
 import me.alxndr.userservice.interfaces.dto.UserDto;
 import me.alxndr.userservice.interfaces.mapper.UserMapper;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author : Alexander Choi
@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user-service")
 public class UserController {
 
+    private final Environment environment;
     private final UserFacade userFacade;
 
 
@@ -35,6 +36,19 @@ public class UserController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(userInfo);
+    }
+
+
+    @GetMapping("/check")
+    public String check(HttpServletRequest request) {
+        log.info("Server port = {}", request.getServerPort());
+
+        return String.format("Hi My Port is %s", request.getServerPort());
+    }
+
+    @GetMapping("/health-check")
+    public String status() {
+        return String.format("User Service is UP! on PORT %s", environment.getProperty("local.server.port"));
     }
 
 }

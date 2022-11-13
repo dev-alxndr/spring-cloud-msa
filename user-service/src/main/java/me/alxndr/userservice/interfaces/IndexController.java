@@ -27,15 +27,4 @@ public class IndexController {
         return "hello User service";
     }
 
-    @GetMapping("/check")
-    public String check(HttpServletRequest request) {
-        log.info("Server port = {}", request.getServerPort());
-
-        return String.format("Hi My Port is %s", greeting.getMessage());
-    }
-
-    @GetMapping("/health-check")
-    public String status() {
-        return "User Service is UP!";
-    }
 }
