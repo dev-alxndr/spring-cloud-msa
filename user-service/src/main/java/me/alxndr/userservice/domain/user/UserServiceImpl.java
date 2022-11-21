@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.alxndr.userservice.interfaces.mapper.UserMapper;
 import me.alxndr.userservice.vo.ResponseOrder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -59,5 +61,16 @@ public class UserServiceImpl implements UserService {
         final List<User> users = userReader.findByUsers();
 
         return users.stream().map(userMapper::toInfo).collect(Collectors.toList());
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
+        final User findUser = userReader.findByEmail(username);
+
+        if (Objects.isNull(findUser)) {
+            throw new UsernameNotFoundException("Username Not Found");
+        }
+
+        return new org.springframework.security.core.userdetails.User(findUser.getEmail(), findUser.getPassword(), new ArrayList<>());
     }
 }

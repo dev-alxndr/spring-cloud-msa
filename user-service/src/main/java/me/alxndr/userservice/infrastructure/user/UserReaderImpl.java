@@ -26,4 +26,9 @@ public class UserReaderImpl implements UserReader {
     public List<User> findByUsers() {
         return (List<User>) userRepository.findAll();
     }
+
+    @Override
+    public User findByEmail(final String username) {
+        return userRepository.findByEmail(username);
+    }
 }

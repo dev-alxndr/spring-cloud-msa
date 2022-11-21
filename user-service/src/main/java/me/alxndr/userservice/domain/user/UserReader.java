@@ -10,4 +10,6 @@ public interface UserReader {
     User findByUserId(String userId);
 
     List<User> findByUsers();
+
+    User findByEmail(String username);
 }
