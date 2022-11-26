@@ -30,3 +30,10 @@ eureka:
 
 greeting:
   message: Welcome to the Simple E-Commerce
+logging:
+  level:
+    me.alxndr.userservice : debug
+
+token:
+  expiration_time: 864000000 # 10days
+  secret: user_token

@@ -27,7 +27,6 @@ public class UserServiceImpl implements UserService {
 
     private final UserReader userReader;
     private final UserMapper userMapper;
-
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -61,6 +60,13 @@ public class UserServiceImpl implements UserService {
         final List<User> users = userReader.findByUsers();
 
         return users.stream().map(userMapper::toInfo).collect(Collectors.toList());
+    }
+
+    @Override
+    public UserInfo findByEmail(final String email) {
+        final User user = userReader.findByEmail(email);
+
+        return userMapper.toInfo(user);
     }
 
     @Override

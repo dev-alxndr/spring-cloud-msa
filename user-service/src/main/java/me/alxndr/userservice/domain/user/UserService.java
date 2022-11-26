@@ -14,4 +14,6 @@ public interface UserService extends UserDetailsService {
 
     Iterable<UserInfo> getUsers();
 
+    UserInfo findByEmail(String email);
+
 }

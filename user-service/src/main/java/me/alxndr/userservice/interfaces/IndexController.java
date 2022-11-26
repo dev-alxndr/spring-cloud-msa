@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
-@RequestMapping("/user-service")
+@RequestMapping
 @RequiredArgsConstructor
 public class IndexController {
 

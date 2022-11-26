@@ -20,14 +20,14 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/user-service")
+@RequestMapping
 public class UserController {
 
     private final Environment environment;
     private final UserFacade userFacade;
 
 
-    @PostMapping("/users")
+    @PostMapping("/sign-up")
     public ResponseEntity signUp(@RequestBody UserDto.Signup request) {
 
         UserInfo userInfo = userFacade.signUp(request);
