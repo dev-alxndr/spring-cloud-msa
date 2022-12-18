@@ -8,4 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: file://Users/alxndr/Documents/workspace/study/msa-env
+          uri: https://github.com/dev-alxndr/spring-cloud-config.git
+#          username: [github username] if repository is private
+#          password: [github password] if repository is private
+#          uri: file://Users/alxndr/Documents/workspace/study/msa-env # local
