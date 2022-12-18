@@ -28,14 +28,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-//        http.authorizeHttpRequests().antMatchers("/users/**").permitAll();
+
         http.authorizeRequests()
+                .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/sign-up", "/login", "/health-check").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .addFilter(getAuthenticationFilter());
-//                .hasIpAddress("192.168.0.4")
-
 
         http.headers().frameOptions().disable();
     }
